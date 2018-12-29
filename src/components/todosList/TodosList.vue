@@ -45,7 +45,7 @@
         </span>
         <ul class="filters">
           <li>
-            <a href="#/all" @click="$emit('event-test')" :class="{ selected: visibility == 'all' }">All</a>
+            <a href="#/all" @click="$emit('event-test', {$event, 'b': '2'})" :class="{ selected: visibility == 'all' }">All</a>
           </li>
           <li>
             <a href="#/active" :class="{ selected: visibility == 'active' }">Active</a>

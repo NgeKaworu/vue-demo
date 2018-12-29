@@ -17,8 +17,8 @@ export default {
     TodosList
   },
   methods:{
-    onEventTest: function () {
-      console.log('子组件回调')
+    onEventTest: function (event) {
+      console.log('子组件回调', event)
     }
   }
 }
