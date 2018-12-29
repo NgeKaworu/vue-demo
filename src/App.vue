@@ -2,7 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld my-message="Welcome to Your Vue.js App"  />
-    <TodosList v-on:event-test="onEventTest" />
+    <TodosList @event-test="onEventTest" />
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
     TodosList
   },
   methods:{
-    onEventTest: function (event) {
+    onEventTest: event => {
       console.log('子组件回调', event)
     }
   }

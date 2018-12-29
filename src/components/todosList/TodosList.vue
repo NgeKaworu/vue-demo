@@ -82,7 +82,7 @@
 // localStorage persistence
 const STORAGE_KEY = "todos-vuejs-2.0";
 const todoStorage = {
-  fetch: function() {
+  fetch() {
     const todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
     todos.forEach(function(todo, index) {
       todo.id = index;
@@ -90,22 +90,22 @@ const todoStorage = {
     todoStorage.uid = todos.length;
     return todos;
   },
-  save: function(todos) {
+  save(todos) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
   }
 };
 
 // visibility filters
 const filters = {
-  all: function(todos) {
+  all(todos) {
     return todos;
   },
-  active: function(todos) {
+  active(todos) {
     return todos.filter(function(todo) {
       return !todo.completed;
     });
   },
-  completed: function(todos) {
+  completed(todos) {
     return todos.filter(function(todo) {
       return todo.completed;
     });
@@ -116,19 +116,17 @@ const filters = {
 export default {
   name: "TodosList",
   // app initial state
-  data: function() {
-    return {
+  data: () => ({
       todos: todoStorage.fetch(),
       newTodo: "",
       editedTodo: null,
       visibility: "all"
-    };
-  },
+  }),
 
   // watch todos change for localStorage persistence
   watch: {
     todos: {
-      handler: function(todos) {
+      handler: (todos) => {
         todoStorage.save(todos);
       },
       deep: true
@@ -138,17 +136,17 @@ export default {
   // computed properties
   // http://vuejs.org/guide/computed.html
   computed: {
-    filteredTodos: function() {
+    filteredTodos() {
       return filters[this.visibility](this.todos);
     },
-    remaining: function() {
+    remaining() {
       return filters.active(this.todos).length;
     },
     allDone: {
-      get: function() {
+      get() {
         return this.remaining === 0;
       },
-      set: function(value) {
+      set(value) {
         this.todos.forEach(function(todo) {
           todo.completed = value;
         });
@@ -157,7 +155,7 @@ export default {
   },
 
   filters: {
-    pluralize: function(n) {
+    pluralize(n) {
       return n === 1 ? "item" : "items";
     }
   },
@@ -165,7 +163,7 @@ export default {
   // methods that implement data logic.
   // note there's no DOM manipulation here at all.
   methods: {
-    addTodo: function() {
+    addTodo() {
       const value = this.newTodo && this.newTodo.trim();
       if (!value) {
         return;
@@ -178,16 +176,16 @@ export default {
       this.newTodo = "";
     },
 
-    removeTodo: function(todo) {
+    removeTodo(todo) {
       this.todos.splice(this.todos.indexOf(todo), 1);
     },
 
-    editTodo: function(todo) {
+    editTodo(todo) {
       this.beforeEditCache = todo.title;
       this.editedTodo = todo;
     },
 
-    doneEdit: function(todo) {
+    doneEdit(todo) {
       if (!this.editedTodo) {
         return;
       }
@@ -198,12 +196,12 @@ export default {
       }
     },
 
-    cancelEdit: function(todo) {
+    cancelEdit(todo) {
       this.editedTodo = null;
       todo.title = this.beforeEditCache;
     },
 
-    removeCompleted: function() {
+    removeCompleted() {
       this.todos = filters.active(this.todos);
     }
   },
