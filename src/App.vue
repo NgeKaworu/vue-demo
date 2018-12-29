@@ -3,18 +3,18 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld my-message="Welcome to Your Vue.js App"  />
     <TodosList @event-test="onEventTest" />
+    <Sudoku />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import TodosList from './components/todosList/TodosList.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
-    TodosList
+    HelloWorld: () => import('./components/HelloWorld'),
+    TodosList: () => import('./components/TodosList'),
+    Sudoku: () => import('./components/Sudoku')
   },
   methods:{
     onEventTest: event => {

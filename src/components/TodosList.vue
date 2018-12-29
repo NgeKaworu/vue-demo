@@ -32,8 +32,8 @@
               v-model="todo.title"
               v-todo-focus="todo == editedTodo"
               @blur="doneEdit(todo)"
-              @keyup.enter="doneEdit(todo)"
               @keyup.esc="cancelEdit(todo)"
+              @keyup.enter="doneEdit(todo)"
             >
           </li>
         </ul>
@@ -181,11 +181,14 @@ export default {
     },
 
     editTodo(todo) {
+      console.log('editTodo')
       this.beforeEditCache = todo.title;
       this.editedTodo = todo;
     },
 
     doneEdit(todo) {
+      
+      console.log('doneEdit', todo)
       if (!this.editedTodo) {
         return;
       }
@@ -197,6 +200,7 @@ export default {
     },
 
     cancelEdit(todo) {
+      console.log('cancelEdit', todo)
       this.editedTodo = null;
       todo.title = this.beforeEditCache;
     },
