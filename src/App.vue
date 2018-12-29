@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <TodosList />
+    <HelloWorld my-message="Welcome to Your Vue.js App"  />
+    <TodosList v-on:event-test="onEventTest" />
   </div>
 </template>
 
@@ -15,7 +15,11 @@ export default {
   components: {
     HelloWorld,
     TodosList
-
+  },
+  methods:{
+    onEventTest: function () {
+      console.log('子组件回调')
+    }
   }
 }
 </script>
