@@ -22,8 +22,8 @@ import * as _ from 'lodash'
 export default {
   name: 'sudoku-demo',
   data: () => ({
-    cells: Array.apply(null, { length: 81 })
-    	.map(function (_, index) { 
+    cells: Array(81).fill(null)
+    	.map((_, index)=>{ 
       	return {
         	id: index,
         	number: index % 9 + 1
@@ -31,7 +31,7 @@ export default {
       })
   }),
   methods: {
-  	shuffle: function () {
+  	shuffle() {
     	this.cells = _.shuffle(this.cells)
     }
   }
