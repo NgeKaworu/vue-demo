@@ -272,6 +272,7 @@ body {
 }
 
 .todoapp {
+  text-align: start;
   background: #fff;
   margin: 130px auto 40px auto;
   position: relative;
