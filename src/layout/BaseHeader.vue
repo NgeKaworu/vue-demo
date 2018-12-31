@@ -1,5 +1,5 @@
 <template>
-    <Header class='header'>
+    <Header class='base-header'>
       <Menu mode="horizontal">
         <Item key="home">
           <RouterLink to="/">
@@ -53,7 +53,7 @@
 </script>
 
 <style scoped>
-  .header {
+  .base-header {
     text-align: center;
     background: #fff;
   }

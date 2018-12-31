@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout class="base-layout">
     <BaseHeader />
     <BaseContent />
     <BaseFooter />
@@ -27,8 +27,7 @@
 </script>
 
 <style scoped>
-  .header {
-    text-align: center;
-    background: #fff;
-  }
+.base-layout{
+  min-height: 100%
+}
 </style>
