@@ -6,8 +6,7 @@ Vue.use(Router)
 export default new Router({
   mode: 'hash',
   base: process.env.BASE_URL,
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'home',
       component: () => import('./views/Home.vue')
@@ -26,8 +25,7 @@ export default new Router({
       path: '/other',
       name: 'other',
       component: () => import('./views/Other.vue'),
-      children:[
-        {
+      children: [{
           path: '/helloworld',
           name: 'helloworld',
           component: () => import('./components/HelloWorld.vue')
@@ -42,7 +40,7 @@ export default new Router({
           name: 'todoslist',
           component: () => import('./components/TodosList.vue')
         },
-      ] 
+      ]
     }
   ]
 })

@@ -1,71 +1,17 @@
 <template>
-  <Layout>
-    <Header class='header'>
-      <Menu mode="horizontal">
-        <Item key="home">
-          <RouterLink to="/">
-            <Icon type="home" />Home</RouterLink>
-        </Item>
-        <Item key="shoplist">
-          <RouterLink to="/shoplist">
-            <Icon type="bars" />Shop List
-          </RouterLink>
-        </Item>
-        <Item key="detail">
-          <RouterLink to="/detail">
-            <Icon type="appstore" />Detail
-          </RouterLink>
-        </Item>
-        <Item key="other">
-          <RouterLink to="/other">
-            <Icon type="ellipsis" />Other
-          </RouterLink>
-        </Item>
-      </Menu>
-    </Header>
-    <Content>
-      <RouterView/>
-    </Content>
-    <Footer>Footer</Footer>
-  </Layout>
+  <BaseLayout />
 </template>
 
 <script>
-  import {
-    Layout,
-    Menu,
-    Icon
-  } from 'ant-design-vue';
-  
-  
-  const {
-    Header,
-    Footer,
-    Content,
-  } = Layout;
-  
-  const {
-    Item
-  } = Menu;
-  
+  import BaseLayout from './layout/BaseLayout.vue'
+
   export default {
-    name: 'app',
+    name: 'App',
     components: {
-      Layout,
-      Header,
-      Footer,
-      Content,
-      Menu,
-      Item,
-      Icon,
+      BaseLayout
     },
   }
 </script>
 
 <style scoped>
-  .header {
-    text-align: center;
-    background: #fff;
-  }
-
 </style>
