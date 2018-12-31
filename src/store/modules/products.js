@@ -1,33 +1,32 @@
-import shop from '../../api/shop'
+import products from "@/api/products";
 
 // initial state
 const state = {
   all: []
-}
+};
 
 // getters
-const getters = {}
+const getters = {};
 
 // actions
 const actions = {
-  getAllProducts ({ commit }) {
-    shop.getProducts(products => {
-      commit('setProducts', products)
-    })
+  async getAllProducts({ commit }) {
+    const { data } = await products.fetch();
+    commit("setProducts", data.data);
   }
-}
+};
 
 // mutations
 const mutations = {
-  setProducts (state, products) {
-    state.all = products
+  setProducts(state, products) {
+    state.all = products;
   },
 
-  decrementProductInventory (state, { id }) {
-    const product = state.all.find(product => product.id === id)
-    product.inventory--
+  decrementProductInventory(state, { id }) {
+    const product = state.all.find(product => product.id === id);
+    product.inventory--;
   }
-}
+};
 
 export default {
   namespaced: true,
@@ -35,4 +34,4 @@ export default {
   getters,
   actions,
   mutations
-}
+};

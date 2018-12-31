@@ -5,23 +5,17 @@
 </template>
 
 <script>
-  import {
+import { Layout } from "ant-design-vue";
+
+const { Content } = Layout;
+
+export default {
+  name: "BaseContent",
+  components: {
     Layout,
-  } from 'ant-design-vue';
-  
-  
-  const {
-    Content,
-  } = Layout;
-  
- 
-  export default {
-    name: 'BaseContent',
-    components: {
-      Layout,
-      Content,
-    },
+    Content
   }
+};
 </script>
 
 <style scoped>

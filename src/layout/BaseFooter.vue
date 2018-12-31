@@ -3,24 +3,17 @@
 </template>
 
 <script>
-  import {
-    Layout,
-  } from 'ant-design-vue';
+import { Layout } from "ant-design-vue";
 
+const { Footer } = Layout;
 
-  const {
-    Footer,
-  } = Layout;
-
-
-  export default {
-    name: 'BaseFooter',
-    components: {
-      Footer,
-    },
+export default {
+  name: "BaseFooter",
+  components: {
+    Footer
   }
+};
 </script>
 
 <style scoped>
-
 </style>

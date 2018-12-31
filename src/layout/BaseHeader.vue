@@ -1,36 +1,36 @@
 <template>
-  <Header class='base-header'>
+  <Header class="base-header">
     <Menu v-model="current" mode="horizontal">
       <Item key="shoplist">
         <RouterLink to="/">
-          <Icon type="bars" />Shop List
+          <Icon type="bars"/>Shop List
         </RouterLink>
       </Item>
       <Item key="detail">
         <RouterLink to="/detail">
-          <Icon type="appstore" />Detail
+          <Icon type="appstore"/>Detail
         </RouterLink>
       </Item>
       <SubMenu>
         <span slot="title" key="other">
           <!-- <RouterLink to="/other"> -->
-          <Icon type="ellipsis" />Other
+          <Icon type="ellipsis"/>Other
           <!-- </RouterLink> -->
         </span>
         <ItemGroup title="其他demo">
           <Item key="helloworld">
             <RouterLink to="/other">
-              <Icon type="global" />HelloWorld
+              <Icon type="global"/>HelloWorld
             </RouterLink>
           </Item>
           <Item key="sudoku">
             <RouterLink to="/other/sudoku">
-              <Icon type="table" />Sudoku
+              <Icon type="table"/>Sudoku
             </RouterLink>
           </Item>
           <Item key="todoslist">
             <RouterLink to="/other/todoslist/all">
-              <Icon type="ordered-list" />TodosList
+              <Icon type="ordered-list"/>TodosList
             </RouterLink>
           </Item>
         </ItemGroup>
@@ -40,48 +40,37 @@
 </template>
 
 <script>
-  import {
+import { Layout, Menu, Icon } from "ant-design-vue";
+
+const { Header } = Layout;
+
+const { Item, SubMenu, ItemGroup } = Menu;
+
+export default {
+  name: "BaseHeader",
+  data: () => ({
+    current: []
+  }),
+  components: {
     Layout,
+    Header,
     Menu,
-    Icon
-  } from 'ant-design-vue';
-
-
-  const {
-    Header
-  } = Layout;
-
-  const {
     Item,
+    Icon,
     SubMenu,
     ItemGroup
-  } = Menu;
-
-  export default {
-    name: 'BaseHeader',
-    data: () => ({
-      current: []
-    }),
-    components: {
-      Layout,
-      Header,
-      Menu,
-      Item,
-      Icon,
-      SubMenu,
-      ItemGroup
-    },
-    watch: {
-      '$route'(to, from){
-        this.$data.current = [to.name]
-      }
+  },
+  watch: {
+    $route(to, from) {
+      this.$data.current = [to.name];
     }
   }
+};
 </script>
 
 <style scoped>
-  .base-header {
-    text-align: center;
-    background: #fff;
-  }
+.base-header {
+  text-align: center;
+  background: #fff;
+}
 </style>

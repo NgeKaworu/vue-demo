@@ -1,16 +1,16 @@
 <template>
-  <BaseLayout />
+  <BaseLayout/>
 </template>
 
 <script>
-  import BaseLayout from './layout/BaseLayout.vue'
+import BaseLayout from "./layout/BaseLayout.vue";
 
-  export default {
-    name: 'App',
-    components: {
-      BaseLayout
-    },
+export default {
+  name: "App",
+  components: {
+    BaseLayout
   }
+};
 </script>
 
 <style scoped>
