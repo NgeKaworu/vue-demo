@@ -45,13 +45,13 @@
         </span>
         <ul class="filters">
           <li>
-            <a href="#/all" @click="$emit('event-test', {$event, 'b': '2'})" :class="{ selected: visibility == 'all' }">All</a>
+            <a href="#/other/todoslist/all" @click="$emit('event-test', {$event, 'b': '2'})" :class="{ selected: visibility == 'all' }">All</a>
           </li>
           <li>
-            <a href="#/active" :class="{ selected: visibility == 'active' }">Active</a>
+            <a href="#/other/todoslist/active" :class="{ selected: visibility == 'active' }">Active</a>
           </li>
           <li>
-            <a href="#/completed" :class="{ selected: visibility == 'completed' }">Completed</a>
+            <a href="#/other/todoslist/completed" :class="{ selected: visibility == 'completed' }">Completed</a>
           </li>
         </ul>
         <button
@@ -59,6 +59,7 @@
           @click="removeCompleted"
           v-show="todos.length > remaining"
         >Clear completed</button>
+      <router-view />
       </footer>
     </section>
     <footer class="info">
@@ -300,7 +301,7 @@ body {
 
 .todoapp h1 {
   position: absolute;
-  top: -185px;
+  top: -145px;
   width: 100%;
   font-size: 100px;
   font-weight: 100;
@@ -474,7 +475,7 @@ label[for="toggle-all"] {
 .footer {
   color: #777;
   padding: 10px 15px;
-  height: 20px;
+  height: 40px;
   text-align: center;
   border-top: 1px solid #e6e6e6;
 }

@@ -40,6 +40,9 @@ export default {
 </script>
 
 <style scoped>
+.demo{
+  text-align: center;
+}
 .center{
   display: flex;
   justify-content: center;

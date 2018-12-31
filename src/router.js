@@ -5,7 +5,7 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'hash',
-  base: process.env.BASE_URL,
+  base: '/vue/',
   routes: [{
       path: '/',
       name: 'home',
@@ -23,22 +23,22 @@ export default new Router({
     },
     {
       path: '/other',
-      name: 'other',
       component: () => import('./views/Other.vue'),
       children: [{
-          path: '/helloworld',
+          path: '',
           name: 'helloworld',
-          component: () => import('./components/HelloWorld.vue')
+          component: () => import('./components/otherDemo/HelloWorld.vue'),
+          props: { myMessage: 'Hello World!' }
         },
         {
-          path: '/sudoku',
+          path: 'sudoku',
           name: 'sudoku',
-          component: () => import('./components/Sudoku.vue')
+          component: () => import('./components/otherDemo/Sudoku.vue')
         },
         {
-          path: '/todoslist',
+          path: 'todoslist/:id',
           name: 'todoslist',
-          component: () => import('./components/TodosList.vue')
+          component: () => import('./components/otherDemo/TodosList.vue'),
         },
       ]
     }
