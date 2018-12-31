@@ -2,7 +2,8 @@ import products from "@/api/products";
 
 // initial state
 const state = {
-  all: []
+  all: [],
+  loading: false
 };
 
 // getters
@@ -11,8 +12,10 @@ const getters = {};
 // actions
 const actions = {
   async getAllProducts({ commit }) {
+    commit("startLoading");
     const { data } = await products.fetch();
     commit("setProducts", data.data);
+    commit("stopLoading");
   }
 };
 
@@ -22,9 +25,17 @@ const mutations = {
     state.all = products;
   },
 
-  decrementProductInventory(state, { id }) {
+  startLoading(state) {
+    state.loading = true;
+  },
+
+  stopLoading(state) {
+    state.loading = false;
+  },
+
+  decrementProductInventory(state, { id, nums = 1 }) {
     const product = state.all.find(product => product.id === id);
-    product.inventory--;
+    product.inventory -= nums;
   }
 };
 

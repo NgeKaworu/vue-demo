@@ -18,7 +18,7 @@ const mProduct = parmas => {
 };
 
 Mock.setup({
-  timeout: "100-200"
+  timeout: "3000-5000"
 });
 
 Mock.mock("/mock_product", "get", mProduct);
