@@ -9,8 +9,10 @@
   },
   "dependencies": {
     "ant-design-vue": "^1.2.4",
+    "axios": "^0.18.0",
     "element-ui": "^2.4.5",
     "lodash": "^4.17.11",
+    "mockjs": "^1.0.1-beta3",
     "vue": "^2.5.17",
     "vue-router": "^3.0.2",
     "vuex": "^3.0.1"

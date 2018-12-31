@@ -8,11 +8,6 @@ export default new Router({
   base: '/vue/',
   routes: [{
       path: '/',
-      name: 'home',
-      component: () => import('./views/Home.vue')
-    },
-    {
-      path: '/shoplist',
       name: 'shoplist',
       component: () => import('./views/ShopList.vue')
     },
@@ -28,7 +23,9 @@ export default new Router({
           path: '',
           name: 'helloworld',
           component: () => import('./components/otherDemo/HelloWorld.vue'),
-          props: { myMessage: 'Hello World!' }
+          props: {
+            myMessage: 'Hello World!'
+          }
         },
         {
           path: 'sudoku',

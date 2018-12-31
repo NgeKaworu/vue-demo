@@ -1,12 +1,8 @@
 <template>
   <Header class='base-header'>
     <Menu mode="horizontal">
-      <Item key="home">
-        <RouterLink to="/">
-          <Icon type="home" />Home</RouterLink>
-      </Item>
       <Item key="shoplist">
-        <RouterLink to="/shoplist">
+        <RouterLink to="/">
           <Icon type="bars" />Shop List
         </RouterLink>
       </Item>
