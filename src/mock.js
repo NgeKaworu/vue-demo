@@ -8,15 +8,15 @@ const mProduct = parmas => {
       "id": "@increment",
       "img": Random.dataImage('500x500', '@name'),
       "detail": "@sentence",
-      "count|0-20" : 5,
+      "count|0-20": 5,
       "name": "@name",
       "prince|0-20": 10,
     }]
   })
 }
 
-Mock.mock('/mock_product', 'get', mProduct)
-
 Mock.setup({
   timeout: '100-200'
 })
+
+Mock.mock('/mock_product', 'get', mProduct)

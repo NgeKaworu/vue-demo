@@ -1,6 +1,6 @@
 <template>
   <Header class='base-header'>
-    <Menu mode="horizontal">
+    <Menu v-model="current" mode="horizontal">
       <Item key="shoplist">
         <RouterLink to="/">
           <Icon type="bars" />Shop List
@@ -12,10 +12,10 @@
         </RouterLink>
       </Item>
       <SubMenu>
-        <span slot="title" class="submenu-title-wrapper" key="other">
-          <RouterLink to="/other">
-            <Icon type="ellipsis" />Other
-          </RouterLink>
+        <span slot="title" key="other">
+          <!-- <RouterLink to="/other"> -->
+          <Icon type="ellipsis" />Other
+          <!-- </RouterLink> -->
         </span>
         <ItemGroup title="其他demo">
           <Item key="helloworld">
@@ -59,6 +59,9 @@
 
   export default {
     name: 'BaseHeader',
+    data: () => ({
+      current: []
+    }),
     components: {
       Layout,
       Header,
@@ -68,6 +71,11 @@
       SubMenu,
       ItemGroup
     },
+    watch: {
+      '$route'(to, from){
+        this.$data.current = [to.name]
+      }
+    }
   }
 </script>
 
