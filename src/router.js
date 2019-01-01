@@ -35,9 +35,9 @@ export default new Router({
           component: () => import("./components/otherDemo/Sudoku.vue")
         },
         {
-          path: "todoslist/:id",
-          name: "todoslist",
-          component: () => import("./components/otherDemo/TodosList.vue")
+          path: "todolist/:id",
+          name: "todolist",
+          component: () => import("./components/otherDemo/TodoList.vue")
         }
       ]
     }

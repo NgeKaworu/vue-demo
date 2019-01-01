@@ -2,7 +2,7 @@ import products from "@/api/products";
 
 // initial state
 const state = {
-  all: []
+  productList: []
 };
 
 // getters
@@ -18,12 +18,12 @@ const actions = {
 
 // mutations
 const mutations = {
-  setProducts(state, products) {
-    state.all = products;
+  setProducts(state, productList) {
+    state.productList = productList;
   },
 
   changeProductInventory(state, { id, nums = 1 }) {
-    const product = state.all.find(product => product.id === id);
+    const product = state.productList.find(product => product.id === id);
     product.inventory += nums;
   }
 };

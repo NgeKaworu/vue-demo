@@ -46,17 +46,17 @@
         <ul class="filters">
           <li>
             <a
-              href="#/other/todoslist/all"
+              href="#/other/todolist/all"
               @click="$emit('event-test', {$event, 'b': '2'})"
               :class="{ selected: visibility == 'all' }"
             >All</a>
           </li>
           <li>
-            <a href="#/other/todoslist/active" :class="{ selected: visibility == 'active' }">Active</a>
+            <a href="#/other/todolist/active" :class="{ selected: visibility == 'active' }">Active</a>
           </li>
           <li>
             <a
-              href="#/other/todoslist/completed"
+              href="#/other/todolist/completed"
               :class="{ selected: visibility == 'completed' }"
             >Completed</a>
           </li>
@@ -122,7 +122,7 @@ const filters = {
 
 // app Vue instance
 export default {
-  name: "TodosList",
+  name: "TodoList",
   // app initial state
   data: () => ({
     todos: todoStorage.fetch(),

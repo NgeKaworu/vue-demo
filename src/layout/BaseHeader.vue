@@ -28,9 +28,9 @@
               <Icon type="table"/>Sudoku
             </RouterLink>
           </Item>
-          <Item key="todoslist">
-            <RouterLink to="/other/todoslist/all">
-              <Icon type="ordered-list"/>TodosList
+          <Item key="todolist">
+            <RouterLink to="/other/todolist/all">
+              <Icon type="ordered-list"/>todolist
             </RouterLink>
           </Item>
         </ItemGroup>
