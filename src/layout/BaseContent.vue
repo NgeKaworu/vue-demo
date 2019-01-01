@@ -1,5 +1,5 @@
 <template>
-  <Content>
+  <Content class="content">
     <Spin :spinning="loading">
       <RouterView/>
     </Spin>
@@ -28,4 +28,9 @@ export default {
 </script>
 
 <style scoped>
+.content {
+  max-width: 980px;
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
 </style>

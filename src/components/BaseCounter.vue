@@ -57,19 +57,14 @@ export default {
 </script>
 
 <style scoped>
-.counter-wrapper {
-  margin: 0 8px;
-  width: 70px;
-  display: inline-block;
-}
 .counter {
   display: flex;
   justify-content: flex-end;
 }
 .count-num {
-  width: 24px;
+  width: 2em;
   text-align: center;
-  font-size: 16px;
+  font-size: 1em;
   font-weight: 700;
 }
 </style>

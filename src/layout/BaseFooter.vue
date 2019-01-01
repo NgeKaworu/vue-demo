@@ -1,5 +1,5 @@
 <template>
-  <Footer>Footer</Footer>
+  <Footer class="footer">Footer</Footer>
 </template>
 
 <script>
@@ -16,4 +16,10 @@ export default {
 </script>
 
 <style scoped>
+.footer{
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  bottom: 0;
+}
 </style>

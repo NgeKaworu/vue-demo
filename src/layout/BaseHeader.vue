@@ -52,7 +52,6 @@ export default {
     current: []
   }),
   components: {
-    Layout,
     Header,
     Menu,
     Item,
@@ -70,6 +69,7 @@ export default {
 
 <style scoped>
 .base-header {
+  padding: 0;
   text-align: center;
   background: #fff;
 }

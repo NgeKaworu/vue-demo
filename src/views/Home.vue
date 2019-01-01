@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <h1>This is an home page</h1>
-    <BaseCounter :counter="num" @onPlusClick="addNum" @onMinusClick="minusNum" max="5" positive/>
+    <BaseCounter :counter="num" @onPlusClick="addNum" @onMinusClick="minusNum" :max="5" positive/>
+    
   </div>
 </template>
 
@@ -13,7 +14,7 @@ export default {
     num: 1
   }),
   components: {
-    BaseCounter
+    BaseCounter,
   },
   methods: {
     addNum() {
