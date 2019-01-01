@@ -1,7 +1,7 @@
 <template>
   <div class="detail">
     <h1>This is an detail page</h1>
-    <BaseCounter @onPlusClick="addNum" @onMinusClick="minusNum">{{ num }}</BaseCounter>
+    <BaseCounter :counter="num" @onPlusClick="addNum" @onMinusClick="minusNum" positive/>
   </div>
 </template>
 
