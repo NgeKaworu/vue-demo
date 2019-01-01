@@ -1,7 +1,7 @@
 <template>
   <div class="detail">
     <h1>This is an detail page</h1>
-    <BaseCounter :counter="num" @onPlusClick="addNum" @onMinusClick="minusNum" positive/>
+    <BaseCounter :counter="num" @onPlusClick="addNum" @onMinusClick="minusNum" max="5" positive/>
   </div>
 </template>
 

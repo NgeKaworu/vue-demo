@@ -10,9 +10,14 @@
         :disabled="!show"
       />
       <span class="count-num" v-show="show">{{ counter }}</span>
-      <div class="plus-button-wrapper">
-        <Button type="primary" shape="circle" size="small" icon="plus" @click="plus"/>
-      </div>
+      <Button
+        type="primary"
+        shape="circle"
+        size="small"
+        icon="plus"
+        @click="plus"
+        :disabled="overflow"
+      />
     </div>
   </div>
 </template>
@@ -26,11 +31,18 @@ export default {
   },
   props: {
     counter: Number,
-    positive: Boolean
+    positive: Boolean,
+    max: {
+      type: Number,
+      default: Infinity
+    }
   },
   computed: {
     show() {
       return this.positive && this.counter > 0;
+    },
+    overflow() {
+      return this.counter >= this.max;
     }
   },
   methods: {
