@@ -22,9 +22,9 @@ const mutations = {
     state.all = products;
   },
 
-  decrementProductInventory(state, { id, nums = 1 }) {
+  changeProductInventory(state, { id, nums = 1 }) {
     const product = state.all.find(product => product.id === id);
-    product.inventory -= nums;
+    product.inventory += nums;
   }
 };
 
