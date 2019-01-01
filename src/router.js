@@ -9,13 +9,13 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "shoplist",
-      component: () => import("./views/ShopList.vue")
+      name: "productlist",
+      component: () => import("./views/ProductList.vue")
     },
     {
-      path: "/detail",
-      name: "detail",
-      component: () => import("./views/Detail.vue")
+      path: "/home",
+      name: "home",
+      component: () => import("./views/Home.vue")
     },
     {
       path: "/other",

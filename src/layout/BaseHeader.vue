@@ -1,14 +1,14 @@
 <template>
   <Header class="base-header">
-    <Menu v-model="current" mode="horizontal">
-      <Item key="shoplist">
+    <Menu :selectedKeys="current" mode="horizontal">
+      <Item key="home">
         <RouterLink to="/">
-          <Icon type="bars"/>Shop List
+          <Icon type="home"/>Home
         </RouterLink>
       </Item>
-      <Item key="detail">
-        <RouterLink to="/detail">
-          <Icon type="appstore"/>Detail
+      <Item key="productlist">
+        <RouterLink to="/productlist">
+          <Icon type="bars"/>Product List
         </RouterLink>
       </Item>
       <SubMenu>
