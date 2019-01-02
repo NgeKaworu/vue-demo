@@ -9,7 +9,7 @@ const mProduct = parmas => {
         "id": "@increment",
         "img": () => Random.dataImage("120x120", Random.name()),
         "description": "@sentence",
-        "quantity|0-20": 5,
+        "inventory|0-20": 5,
         "title": "@name",
         "price|0-20": 10
       }

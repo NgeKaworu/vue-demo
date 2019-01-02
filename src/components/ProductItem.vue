@@ -9,8 +9,8 @@
       <div class="p-m-b">{{ product.price | addCurrencySymbol }}</div>
     </div>
     <div slot="item-end" class="product-end">
-      <BaseCounter class="product-counter" positive :max="product.quantity"/>
-      <div class="product-quantity">{{ product.quantity | addQuantity }}</div>
+      <BaseCounter class="product-counter" positive :max="product.inventory"/>
+      <div class="product-inventory">{{ product.inventory | addInventory }}</div>
     </div>
   </BaseItem>
 </template>
@@ -28,7 +28,7 @@ export default {
   },
   filters: {
     addCurrencySymbol: value => "￥" + value,
-    addQuantity: value => `还剩: ${value} 件`
+    addInventory: value => `还剩: ${value} 件`
   }
 };
 </script>
@@ -57,7 +57,7 @@ export default {
 
 .product-end {
   flex-direction: column-reverse;
-  .product-quantity {
+  .product-inventory {
     margin-bottom: 8px;
     text-align: end;
   }

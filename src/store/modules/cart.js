@@ -1,15 +1,18 @@
 // initial state
 // shape: [{ id, quantity }]
 const state = {
-  items: [],
-  checkoutStatus: null
+  items: []
 };
 
 // getters
 const getters = {
+  // 获取所有购物车中的商品详情
   cartProducts: (state, getters, rootState) => {
+    // 用id查product表 返回详情及购物车中的数量
     return state.items.map(({ id, quantity }) => {
-      const product = rootState.products.productList.find(product => product.id === id);
+      const product = rootState.products.productList.find(
+        product => product.id === id
+      );
       return {
         title: product.title,
         price: product.price,
@@ -18,6 +21,7 @@ const getters = {
     });
   },
 
+  // 计算总价
   cartTotalPrice: (state, getters) => {
     return getters.cartProducts.reduce((total, product) => {
       return total + product.price * product.quantity;
@@ -27,52 +31,54 @@ const getters = {
 
 // actions
 const actions = {
+  // 结算 现在用不到
   checkout({ commit, state }, products) {
     const savedCartItems = [...state.items];
-    commit("setCheckoutStatus", null);
     // empty cart
     commit("setCartItems", { items: [] });
   },
 
-  addProductToCart({ state, commit }, product) {
-    commit("setCheckoutStatus", null);
-    if (product.inventory > 0) {
-      const cartItem = state.items.find(item => item.id === product.id);
-      if (!cartItem) {
-        commit("pushProductToCart", { id: product.id });
-      } else {
-        commit("incrementItemQuantity", cartItem);
-      }
-      // remove 1 item from stock
-      commit(
-        "products/decrementProductInventory",
-        { id: product.id },
-        { root: true }
-      );
+  changeProductInCart({ state, commit }, { id, quantity }) {
+    const cartItem = state.items.find(item => item.id === id);
+    cartItem.quantity;
+    // 购物车不存在商品 并且新增数量为正, 则调用添加商品到购物车mutations
+    if (!cartItem && quantity > 0) {
+      commit("pushProductToCart", { id, quantity });
+    } else {
+      return;
+    }
+    // 商品数量与输入数量之和小于0, 则从购物车中删除该项
+    if (cartItem.quantity + quantity <= 0) {
+      commit("popProductToCart", id);
+    } else {
+      commit("changeItemQuantity", { id, quantity });
     }
   }
 };
 
 // mutations
 const mutations = {
-  pushProductToCart(state, { id }) {
+  // 从购物车列表中删除
+  popProductToCart(state, id) {
+    state = state.items.filter(item => item.id === id);
+  },
+
+  // 添加ID和数量到购物车列表
+  pushProductToCart(state, { id, quantity = 1 }) {
     state.items.push({
       id,
-      quantity: 1
+      quantity
     });
   },
 
-  incrementItemQuantity(state, { id }) {
+  // 库存操作
+  changeItemQuantity(state, { id, nums = 1 }) {
     const cartItem = state.items.find(item => item.id === id);
-    cartItem.quantity++;
+    cartItem.quantity += nums;
   },
 
   setCartItems(state, { items }) {
     state.items = items;
-  },
-
-  setCheckoutStatus(state, status) {
-    state.checkoutStatus = status;
   }
 };
 
