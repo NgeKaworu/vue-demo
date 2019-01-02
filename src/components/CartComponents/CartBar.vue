@@ -1,13 +1,13 @@
 <template>
   <div class="cart-bar">
-    <BaseItem>
-      <div class="cart-btn" slot="item-end">
+    <div class="cart-btn">
+      <div :class="{'checkout-bar': true, 'active': visible}">
         <Badge :count="totalQuantity">
-          <Button icon="shopping-cart" size="large" shape="circle" @click="showDrawer"/>
+          <Button icon="shopping-cart" size="large" shape="circle" @click="visible = !visible"/>
         </Badge>
       </div>
-    </BaseItem>
-    <Drawer placement="bottom" @close="onClose" :visible="visible" :closable="false">
+    </div>
+    <Drawer placement="bottom" @close="onClose" :visible="false" :closable="false">
       <CartList/>
     </Drawer>
   </div>
@@ -19,7 +19,7 @@ import BaseItem from "@/components/BaseComponents/BaseItem";
 import CartList from "./CartList";
 import { mapGetters } from "vuex";
 
-import './CartBar.less'
+import "./CartBar.less";
 export default {
   data: () => ({
     visible: false
@@ -48,13 +48,25 @@ export default {
 };
 </script>
 
-<style lange="less" scoped>
+<style lang="less" scoped>
 .cart-bar {
   border-radius: 20px;
   pointer-events: auto;
+  min-width: 320px;
 }
-.cart-btn {
+.cart-btn,
+.checkout-bar {
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.checkout-bar {
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 20px;
+  width: 0px;
+  transition: all 0.5s;
+}
+.active {
+  width: 320px;
+  background: #fff;
 }
 </style>

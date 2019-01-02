@@ -25,7 +25,7 @@ export default {
   z-index: 1;
   min-width: 100%;
   bottom: 0;
-  padding: 24px 12px;
+  padding: 10px 30px;
   background: none;
   pointer-events: none;
 }
