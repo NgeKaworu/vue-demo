@@ -15,22 +15,26 @@ const getters = {
       );
       return {
         title: product.title,
-        price: product.price,
+        totalPrice: product.price * quantity,
         quantity
       };
     });
   },
-
   // 计算总价
-  cartTotalPrice: (state, getters) => {
-    return getters.cartProducts.reduce((total, product) => {
-      return total + product.price * product.quantity;
-    }, 0);
-  },
-
+  cartTotalPrice: state =>
+    state.items.reduce((total, item) => total + item.totalPrice, 0),
+  // 通过id获取商品数
   getQuantityById: state => id => {
     const item = state.items.find(product => product.id === id);
     return item ? item.quantity : 0;
+  },
+  // 获取购物车全部商品数
+  getTotalQuantity: state =>
+    state.items.reduce((total, item) => total + item.quantity, 0),
+  // 通过id获取单位总价
+  getTotalPriceById: state => id => {
+    const item = state.items.find(product => product.id === id);
+    return item ? item.totalPrice : 0;
   }
 };
 

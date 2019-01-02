@@ -1,5 +1,5 @@
 <template>
-  <BaseItem>
+  <BaseItem class="product-item">
     <div slot="item-start" class="product-start">
       <img :src="product.img" class="product-img">
     </div>
@@ -9,19 +9,19 @@
       <div class="p-m-b">{{ product.price | addCurrencySymbol }}</div>
     </div>
     <div slot="item-end" class="product-end">
-      <ProductCounter :productId="product.id"/>
+      <CartCounter :productId="product.id"/>
       <div class="product-inventory">{{ product.inventory | addInventory }}</div>
     </div>
   </BaseItem>
 </template>
 
 <script>
-import BaseItem from "./BaseItem.vue";
-import ProductCounter from "./ProductCounter.vue";
+import BaseItem from "@/components/BaseComponents/BaseItem";
+import CartCounter from "@/components/CartComponents/CartCounter";
 export default {
   components: {
     BaseItem,
-    ProductCounter
+    CartCounter
   },
   props: {
     product: Object
@@ -34,6 +34,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.product-item {
+  max-width: 320px;
+  justify-content: space-between;
+  box-shadow: 2px 3px 3px rgba(112, 112, 112, 0.2);
+}
 .product-start,
 .product-mid,
 .product-end {

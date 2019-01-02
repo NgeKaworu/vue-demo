@@ -4,7 +4,7 @@ const Random = Mock.Random;
 const mProduct = parmas => {
   console.log("in Mock, Parmas is: ", parmas);
   return Mock.mock({
-    "data|15": [
+    "data|60": [
       {
         "id": "@increment",
         "img": () => Random.dataImage("120x120", Random.name()),

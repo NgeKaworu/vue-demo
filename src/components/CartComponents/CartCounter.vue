@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import BaseCounter from "./BaseCounter.vue";
+import BaseCounter from "@/components/BaseComponents/BaseCounter";
 import { mapGetters, mapActions } from "vuex";
 export default {
   components: {

@@ -9,22 +9,22 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "home",
-      component: () => import("./views/Home.vue")
+      name: "homepage",
+      component: () => import("./views/HomePage.vue")
     },
     {
-      path: "/productlist",
-      name: "productlist",
-      component: () => import("./views/ProductList.vue")
+      path: "/product",
+      name: "productpage",
+      component: () => import("./views/ProductPage.vue")
     },
     {
       path: "/other",
-      component: () => import("./views/Other.vue"),
+      component: () => import("./views/OtherPage.vue"),
       children: [
         {
           path: "",
           name: "helloworld",
-          component: () => import("./components/otherDemo/HelloWorld.vue"),
+          component: () => import("./components/OtherDemo/HelloWorld.vue"),
           props: {
             myMessage: "Hello World!"
           }
@@ -32,12 +32,12 @@ export default new Router({
         {
           path: "sudoku",
           name: "sudoku",
-          component: () => import("./components/otherDemo/Sudoku.vue")
+          component: () => import("./components/OtherDemo/Sudoku.vue")
         },
         {
           path: "todolist/:id",
           name: "todolist",
-          component: () => import("./components/otherDemo/TodoList.vue")
+          component: () => import("./components/OtherDemo/TodoList.vue")
         }
       ]
     }

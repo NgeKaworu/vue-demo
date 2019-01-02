@@ -28,12 +28,6 @@
   flex-direction: column;
 }
 
-.item-wrap {
-  max-width: 320px;
-  justify-content: space-between;
-  box-shadow: 2px 3px 3px rgba(112, 112, 112, .2)
-}
-
 .item-start,
 .item-mid,
 .item-end {

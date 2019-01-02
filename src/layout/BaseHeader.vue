@@ -1,13 +1,13 @@
 <template>
   <Header class="base-header">
     <Menu :selectedKeys="current" mode="horizontal">
-      <Item key="home">
+      <Item key="homepage">
         <RouterLink to="/">
           <Icon type="home"/>Home
         </RouterLink>
       </Item>
-      <Item key="productlist">
-        <RouterLink to="/productlist">
+      <Item key="productpage">
+        <RouterLink to="/product">
           <Icon type="bars"/>Product List
         </RouterLink>
       </Item>
