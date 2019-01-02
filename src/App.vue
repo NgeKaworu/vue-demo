@@ -1,36 +1,17 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld my-message="Welcome to Your Vue.js App"  />
-    <TodosList @event-test="onEventTest" />
-    <Sudoku />
-  </div>
+  <BaseLayout/>
 </template>
 
 <script>
+import BaseLayout from "./layout/BaseLayout.vue";
 
 export default {
-  name: 'app',
+  name: "App",
   components: {
-    HelloWorld: () => import('./components/HelloWorld'),
-    TodosList: () => import('./components/TodosList'),
-    Sudoku: () => import('./components/Sudoku')
-  },
-  methods:{
-    onEventTest: event => {
-      console.log('子组件回调', event)
-    }
+    BaseLayout
   }
-}
+};
 </script>
 
 <style scoped>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

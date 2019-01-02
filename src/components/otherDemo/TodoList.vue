@@ -45,13 +45,20 @@
         </span>
         <ul class="filters">
           <li>
-            <a href="#/all" @click="$emit('event-test', {$event, 'b': '2'})" :class="{ selected: visibility == 'all' }">All</a>
+            <a
+              href="#/other/todolist/all"
+              @click="$emit('event-test', {$event, 'b': '2'})"
+              :class="{ selected: visibility == 'all' }"
+            >All</a>
           </li>
           <li>
-            <a href="#/active" :class="{ selected: visibility == 'active' }">Active</a>
+            <a href="#/other/todolist/active" :class="{ selected: visibility == 'active' }">Active</a>
           </li>
           <li>
-            <a href="#/completed" :class="{ selected: visibility == 'completed' }">Completed</a>
+            <a
+              href="#/other/todolist/completed"
+              :class="{ selected: visibility == 'completed' }"
+            >Completed</a>
           </li>
         </ul>
         <button
@@ -59,6 +66,7 @@
           @click="removeCompleted"
           v-show="todos.length > remaining"
         >Clear completed</button>
+        <router-view/>
       </footer>
     </section>
     <footer class="info">
@@ -114,19 +122,19 @@ const filters = {
 
 // app Vue instance
 export default {
-  name: "TodosList",
+  name: "TodoList",
   // app initial state
   data: () => ({
-      todos: todoStorage.fetch(),
-      newTodo: "",
-      editedTodo: null,
-      visibility: "all"
+    todos: todoStorage.fetch(),
+    newTodo: "",
+    editedTodo: null,
+    visibility: "all"
   }),
 
   // watch todos change for localStorage persistence
   watch: {
     todos: {
-      handler: (todos) => {
+      handler: todos => {
         todoStorage.save(todos);
       },
       deep: true
@@ -181,14 +189,13 @@ export default {
     },
 
     editTodo(todo) {
-      console.log('editTodo')
+      console.log("editTodo");
       this.beforeEditCache = todo.title;
       this.editedTodo = todo;
     },
 
     doneEdit(todo) {
-      
-      console.log('doneEdit', todo)
+      console.log("doneEdit", todo);
       if (!this.editedTodo) {
         return;
       }
@@ -200,7 +207,7 @@ export default {
     },
 
     cancelEdit(todo) {
-      console.log('cancelEdit', todo)
+      console.log("cancelEdit", todo);
       this.editedTodo = null;
       todo.title = this.beforeEditCache;
     },
@@ -300,7 +307,7 @@ body {
 
 .todoapp h1 {
   position: absolute;
-  top: -185px;
+  top: -145px;
   width: 100%;
   font-size: 100px;
   font-weight: 100;
@@ -474,7 +481,7 @@ label[for="toggle-all"] {
 .footer {
   color: #777;
   padding: 10px 15px;
-  height: 20px;
+  height: 40px;
   text-align: center;
   border-top: 1px solid #e6e6e6;
 }
