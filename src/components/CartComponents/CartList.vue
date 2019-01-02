@@ -1,36 +1,22 @@
 <template>
-  <Row justify="center">
-    <Col
-      :xs="24"
-      :sm="12"
-      :md="8"
-      v-for="product in productList"
-      :key="product.id"
-      style="text-align: center"
-    >
-      <ProductItem :product="product"/>
-    </Col>
-  </Row>
+  <div>
+    <CartItem v-for="item in items" :key="item.id" :item="item"/>
+  </div>
 </template>
 
 
 <script>
-import ProductItem from "./ProductItem";
-import { mapState, mapActions } from "vuex";
-import { Drawer } from "ant-design-vue";
+import CartItem from "./CartItem";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   components: {
-    ProductItem,
-    Drawer
+    CartItem
   },
   computed: {
-    ...mapState({
-      productList: state => state.products.productList
+    ...mapGetters({
+      items: "cart/cartProducts"
     })
-  },
-  created() {
-    this.$store.dispatch("products/getAllProducts");
   }
 };
 </script>

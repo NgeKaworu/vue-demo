@@ -1,6 +1,6 @@
 <template>
   <Footer class="footer">
-    <CartBar />
+    <CartBar/>
   </Footer>
 </template>
 
@@ -23,9 +23,10 @@ export default {
 .footer {
   position: fixed;
   z-index: 1;
-  width: 100%;
+  min-width: 100%;
   bottom: 0;
   padding: 24px 12px;
   background: none;
+  pointer-events: none;
 }
 </style>

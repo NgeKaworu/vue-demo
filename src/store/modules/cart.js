@@ -16,7 +16,8 @@ const getters = {
       return {
         title: product.title,
         totalPrice: product.price * quantity,
-        quantity
+        quantity,
+        id
       };
     });
   },

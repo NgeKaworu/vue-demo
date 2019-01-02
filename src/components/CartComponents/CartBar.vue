@@ -7,14 +7,19 @@
         </Badge>
       </div>
     </BaseItem>
-    <Drawer placement="bottom" @close="onClose" :visible="visible" :closable="false"></Drawer>
+    <Drawer placement="bottom" @close="onClose" :visible="visible" :closable="false">
+      <CartList/>
+    </Drawer>
   </div>
 </template>
 
 <script>
 import { Button, Drawer, Badge } from "ant-design-vue";
 import BaseItem from "@/components/BaseComponents/BaseItem";
+import CartList from "./CartList";
 import { mapGetters } from "vuex";
+
+import './CartBar.less'
 export default {
   data: () => ({
     visible: false
@@ -29,7 +34,8 @@ export default {
     BaseItem,
     Button,
     Drawer,
-    Badge
+    Badge,
+    CartList
   },
   methods: {
     showDrawer() {
@@ -42,9 +48,10 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lange="less" scoped>
 .cart-bar {
   border-radius: 20px;
+  pointer-events: auto;
 }
 .cart-btn {
   display: flex;

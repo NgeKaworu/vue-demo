@@ -1,11 +1,9 @@
 <template>
   <BaseItem class="cart-item">
-    <div slot="item-start" class="cart-start">
-    </div>
-    <div slot="item-mid" class="cart-mid">
-    </div>
+    <div slot="item-start" class="cart-start">{{item.title}}</div>
+    <div slot="item-mid" class="cart-mid">{{item.totalPrice | addCurrencySymbol}}</div>
     <div slot="item-end" class="cart-end">
-      <CartCounter :cartId="cart.id"/>
+      <CartCounter :productId="item.id"/>
     </div>
   </BaseItem>
 </template>
@@ -19,10 +17,10 @@ export default {
     CartCounter
   },
   props: {
-    cart: Object
+    item: Object
   },
   filters: {
-    addCurrencySymbol: value => "￥" + value,
+    addCurrencySymbol: value => "￥" + value
   }
 };
 </script>

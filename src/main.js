@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store/";
 
 import "./mock";
+import "./main.less"
 
 Vue.config.productionTip = false;
 new Vue({
