@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     show() {
-      return this.positive && this.counter > 0;
+      return this.positive ? this.counter > 0 : true;
     },
     overflow() {
       return this.counter >= this.max;

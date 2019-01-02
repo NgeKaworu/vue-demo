@@ -1,7 +1,6 @@
 <template>
   <div class="product-list">
     <h1>This is an product-list page</h1>
-
     <Row justify="center">
       <Col
         :xs="24"
@@ -11,9 +10,7 @@
         :key="product.id"
         style="text-align: center"
       >
-        <BaseItem>
-          <img slot="item-start" :src="product.img" style="width:100%; height: 100%">
-        </BaseItem>
+        <ProductItem :product="product"/>
       </Col>
     </Row>
   </div>
@@ -22,12 +19,12 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import BaseItem from "@/components/BaseItem";
+import ProductItem from "@/components/ProductItem";
 import { Row, Col } from "ant-design-vue";
 
 export default {
   components: {
-    BaseItem,
+    ProductItem,
     Row,
     Col
   },
@@ -42,14 +39,9 @@ export default {
   created() {
     this.$store.dispatch("products/getAllProducts");
   },
-  ucpdated() {
+  updated() {
     console.log(this.productList);
   },
-  filters: {
-    addCurrencySymbol(value) {
-      return "￥" + value;
-    }
-  }
 };
 </script>
 

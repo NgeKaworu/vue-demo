@@ -17,8 +17,9 @@
 .item-start,
 .item-mid,
 .item-end {
+  margin: 0 auto;
   display: flex;
-  flex: auto;
+  flex: 1 0 auto;
 }
 
 .item-start,
@@ -29,8 +30,8 @@
 
 .item-wrap {
   max-width: 320px;
-  background: red;
   justify-content: space-between;
+  box-shadow: 2px 3px 3px rgba(112, 112, 112, .2)
 }
 
 .item-start,

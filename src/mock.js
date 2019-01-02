@@ -4,14 +4,14 @@ const Random = Mock.Random;
 const mProduct = parmas => {
   console.log("in Mock, Parmas is: ", parmas);
   return Mock.mock({
-    "data|10": [
+    "data|15": [
       {
-        id: "@increment",
-        img: () => Random.dataImage("120x120", Random.name()),
-        detail: "@sentence",
-        "count|0-20": 5,
-        name: "@name",
-        "prince|0-20": 10
+        "id": "@increment",
+        "img": () => Random.dataImage("120x120", Random.name()),
+        "description": "@sentence",
+        "quantity|0-20": 5,
+        "title": "@name",
+        "price|0-20": 10
       }
     ]
   });
