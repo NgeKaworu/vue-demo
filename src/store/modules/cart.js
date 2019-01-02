@@ -26,6 +26,11 @@ const getters = {
     return getters.cartProducts.reduce((total, product) => {
       return total + product.price * product.quantity;
     }, 0);
+  },
+
+  getQuantityById: state => id => {
+    const item = state.items.find(product => product.id === id);
+    return item ? item.quantity : 0;
   }
 };
 
@@ -38,17 +43,13 @@ const actions = {
     commit("setCartItems", { items: [] });
   },
 
-  changeProductInCart({ state, commit }, { id, quantity }) {
+  changeQuantityById({ state, commit }, { id, quantity }) {
     const cartItem = state.items.find(item => item.id === id);
-    cartItem.quantity;
     // 购物车不存在商品 并且新增数量为正, 则调用添加商品到购物车mutations
     if (!cartItem && quantity > 0) {
       commit("pushProductToCart", { id, quantity });
-    } else {
-      return;
-    }
-    // 商品数量与输入数量之和小于0, 则从购物车中删除该项
-    if (cartItem.quantity + quantity <= 0) {
+    } else if (cartItem.quantity + quantity <= 0) {
+      // 商品数量与输入数量之和小于0, 则从购物车中删除该项
       commit("popProductToCart", id);
     } else {
       commit("changeItemQuantity", { id, quantity });
@@ -60,7 +61,7 @@ const actions = {
 const mutations = {
   // 从购物车列表中删除
   popProductToCart(state, id) {
-    state = state.items.filter(item => item.id === id);
+    state.items = state.items.filter(item => item.id !== id);
   },
 
   // 添加ID和数量到购物车列表
@@ -72,9 +73,9 @@ const mutations = {
   },
 
   // 库存操作
-  changeItemQuantity(state, { id, nums = 1 }) {
+  changeItemQuantity(state, { id, quantity = 1 }) {
     const cartItem = state.items.find(item => item.id === id);
-    cartItem.quantity += nums;
+    cartItem.quantity += quantity;
   },
 
   setCartItems(state, { items }) {

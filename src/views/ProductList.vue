@@ -38,10 +38,7 @@ export default {
   },
   created() {
     this.$store.dispatch("products/getAllProducts");
-  },
-  updated() {
-    console.log(this.productList);
-  },
+  }
 };
 </script>
 

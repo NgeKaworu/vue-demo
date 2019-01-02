@@ -9,7 +9,7 @@
       <div class="p-m-b">{{ product.price | addCurrencySymbol }}</div>
     </div>
     <div slot="item-end" class="product-end">
-      <BaseCounter class="product-counter" positive :max="product.inventory"/>
+      <ProductCounter :productId="product.id"/>
       <div class="product-inventory">{{ product.inventory | addInventory }}</div>
     </div>
   </BaseItem>
@@ -17,11 +17,11 @@
 
 <script>
 import BaseItem from "./BaseItem.vue";
-import BaseCounter from "./BaseCounter.vue";
+import ProductCounter from "./ProductCounter.vue";
 export default {
   components: {
     BaseItem,
-    BaseCounter
+    ProductCounter
   },
   props: {
     product: Object
