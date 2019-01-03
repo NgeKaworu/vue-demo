@@ -1,10 +1,11 @@
 module.exports = {
-  // productionSourceMap: false,
+  baseUrl: "/vue/",
+  productionSourceMap: false,
   css: {
-      loaderOptions: {
-          less: {
-              javascriptEnabled: true
-          }
+    loaderOptions: {
+      less: {
+        javascriptEnabled: true
       }
+    }
   }
-}
+};
