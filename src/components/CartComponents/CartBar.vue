@@ -72,7 +72,6 @@ export default {
 <style lang="less" scoped>
 .cart-bar {
   border-radius: 20px;
-  pointer-events: auto;
   min-width: 320px;
 }
 .cart-btn,
@@ -81,6 +80,7 @@ export default {
   justify-content: flex-end;
 }
 .checkout-bar {
+  pointer-events: auto;
   background-color: rgba(255, 255, 255, 0);
   box-shadow: none;
   border-radius: 20px;
