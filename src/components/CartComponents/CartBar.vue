@@ -2,6 +2,8 @@
   <div class="cart-bar">
     <div class="cart-btn">
       <div :class="{'checkout-bar': true, 'active': visible}">
+        <Button type="primary" class="checkout-btn" :style="{border: visible || 0, padding: visible || 0 }">223</Button>
+        <div class="total-price-bar">123</div>
         <Badge :count="totalQuantity">
           <Button icon="shopping-cart" size="large" shape="circle" @click="visible = !visible"/>
         </Badge>
@@ -68,5 +70,22 @@ export default {
 .active {
   width: 320px;
   background: #fff;
+}
+.checkout-btn,
+.total-price-bar {
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  display: flex;
+}
+.checkout-btn {
+  width: 100px;
+  border-radius: 0;
+  border-top-left-radius: 20px 20px;
+  border-bottom-left-radius: 20px 20px;
+  height:100%
+}
+.total-price-bar {
+  width: 180px;
 }
 </style>
