@@ -33,7 +33,6 @@
 
 <script>
 import { Button, Drawer, Badge } from "ant-design-vue";
-import BaseItem from "@/components/BaseComponents/BaseItem";
 import CartList from "./CartList";
 import { mapGetters } from "vuex";
 
@@ -53,7 +52,6 @@ export default {
   },
 
   components: {
-    BaseItem,
     Button,
     Drawer,
     Badge,
