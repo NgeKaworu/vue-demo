@@ -29,7 +29,7 @@ export default {
 .cart-item {
   max-width: 320px;
   justify-content: space-between;
-  box-shadow: 2px 3px 3px rgba(112, 112, 112, 0.2);
+  box-shadow: 1px 1px 1px rgba(112, 112, 112, 0.2);
 }
 .cart-start,
 .cart-mid,
@@ -38,44 +38,22 @@ export default {
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
-.cart-start {
-  .cart-img {
-    width: 100%;
-    height: 100%;
-  }
-}
+.cart-start,
 .cart-mid {
-  div {
-    text-align: start;
-  }
-}
-
-.cart-end {
-  flex-direction: column-reverse;
-  .cart-inventory {
-    margin-bottom: 8px;
-    text-align: end;
-  }
-}
-.p-m-t {
-  font-weight: 700;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.p-m-c {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
+.cart-start {
+  font-weight: 1000;
 }
-.p-m-b {
-  position: absolute;
-  bottom: 5px;
-  color: red;
-  font-weight: 500;
+
+.cart-mid {
+  font-weight: 600;
+  text-align: end;
 }
 </style>

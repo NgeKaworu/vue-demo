@@ -10,6 +10,7 @@
     >
       <ProductItem :product="product"/>
     </Col>
+    <Spin :spinning="loading"/>
   </Row>
 </template>
 
@@ -17,17 +18,19 @@
 <script>
 import ProductItem from "./ProductItem";
 import { mapState, mapActions } from "vuex";
-import { Row, Col } from "ant-design-vue";
+import { Row, Col, Spin } from "ant-design-vue";
 
 export default {
   components: {
     ProductItem,
     Row,
-    Col
+    Col,
+    Spin
   },
   computed: {
     ...mapState({
-      productList: state => state.products.productList
+      productList: state => state.products.productList,
+      loading: state => state.global.loading
     })
   },
   created() {

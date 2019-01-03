@@ -1,27 +1,20 @@
 <template>
   <Content class="content">
-    <Spin :spinning="loading">
+    <KeepAlive>
       <RouterView/>
-    </Spin>
+    </KeepAlive>
   </Content>
 </template>
 
 <script>
-import { Layout, Spin } from "ant-design-vue";
-import { mapState } from "vuex";
+import { Layout } from "ant-design-vue";
 
 const { Content } = Layout;
 
 export default {
   name: "BaseContent",
-  computed: {
-    ...mapState({
-      loading: state => state.global.loading
-    })
-  },
   components: {
-    Content,
-    Spin
+    Content
   }
 };
 </script>

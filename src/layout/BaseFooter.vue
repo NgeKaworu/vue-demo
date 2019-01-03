@@ -22,7 +22,7 @@ export default {
 <style scoped>
 .footer {
   position: fixed;
-  z-index: 1;
+  z-index: 1001;
   min-width: 100%;
   bottom: 0;
   padding: 10px 30px;

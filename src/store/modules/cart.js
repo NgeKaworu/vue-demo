@@ -22,8 +22,8 @@ const getters = {
     });
   },
   // 计算总价
-  cartTotalPrice: state =>
-    state.items.reduce((total, item) => total + item.totalPrice, 0),
+  cartTotalPrice: (state, getter) =>
+    getter.cartProducts.reduce((total, item) => total + item.totalPrice, 0),
   // 通过id获取商品数
   getQuantityById: state => id => {
     const item = state.items.find(product => product.id === id);
@@ -45,7 +45,7 @@ const actions = {
   checkout({ commit, state }, products) {
     const savedCartItems = [...state.items];
     // empty cart
-    commit("setCartItems", { items: [] });
+    commit("clearnCart");
   },
 
   changeQuantityById({ state, commit }, { id, quantity }) {
@@ -83,8 +83,8 @@ const mutations = {
     cartItem.quantity += quantity;
   },
 
-  setCartItems(state, { items }) {
-    state.items = items;
+  clearnCart(state) {
+    state.items = [];
   }
 };
 

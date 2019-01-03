@@ -1,16 +1,32 @@
 <template>
   <div class="cart-bar">
     <div class="cart-btn">
-      <div :class="{'checkout-bar': true, 'active': visible}">
-        <Button type="primary" class="checkout-btn" :style="{border: visible || 0, padding: visible || 0 }">223</Button>
-        <div class="total-price-bar">123</div>
+      <div
+        :class="{'checkout-bar': true, 'active': showDrawer || showCheckBar}"
+        @mouseleave="showCheckBar=false"
+      >
+        <Button
+          type="primary"
+          class="checkout-btn"
+          :style="{border: showCheckBar || 0, padding: showCheckBar || 0 }"
+        >去结算</Button>
+        <div
+          class="total-price-bar"
+          @click="showDrawer = !showDrawer"
+        >{{cartTotalPrice | addCurrencySymbol}}</div>
         <Badge :count="totalQuantity">
-          <Button icon="shopping-cart" size="large" shape="circle" @click="visible = !visible"/>
+          <Button
+            @mouseover="showCheckBar=true"
+            icon="shopping-cart"
+            size="large"
+            shape="circle"
+            @click="showDrawer = !showDrawer"
+          />
         </Badge>
       </div>
     </div>
-    <Drawer placement="bottom" @close="onClose" :visible="false" :closable="false">
-      <CartList/>
+    <Drawer placement="bottom" @close="onClose" :visible="showDrawer" :closable="false">
+      <CartList @closeAll="onClose"/>
     </Drawer>
   </div>
 </template>
@@ -24,11 +40,15 @@ import { mapGetters } from "vuex";
 import "./CartBar.less";
 export default {
   data: () => ({
-    visible: false
+    // 控制抽屉显隐
+    showDrawer: false,
+    // 控制结算条显隐
+    showCheckBar: false
   }),
   computed: {
     ...mapGetters({
-      totalQuantity: "cart/getTotalQuantity"
+      totalQuantity: "cart/getTotalQuantity",
+      cartTotalPrice: "cart/cartTotalPrice"
     })
   },
 
@@ -40,12 +60,13 @@ export default {
     CartList
   },
   methods: {
-    showDrawer() {
-      this.visible = true;
-    },
     onClose() {
-      this.visible = false;
+      this.showDrawer = false;
+      this.showCheckBar = false;
     }
+  },
+  filters: {
+    addCurrencySymbol: value => "￥" + value
   }
 };
 </script>
@@ -63,6 +84,7 @@ export default {
 }
 .checkout-bar {
   background-color: rgba(255, 255, 255, 0);
+  box-shadow: none;
   border-radius: 20px;
   width: 0px;
   transition: all 0.5s;
@@ -70,6 +92,7 @@ export default {
 .active {
   width: 320px;
   background: #fff;
+  box-shadow: 2px 3px 9px rgba(112, 112, 112, 0.2);
 }
 .checkout-btn,
 .total-price-bar {
@@ -77,13 +100,14 @@ export default {
   justify-content: center;
   overflow: hidden;
   display: flex;
+  font-weight: 1000;
 }
 .checkout-btn {
   width: 100px;
   border-radius: 0;
   border-top-left-radius: 20px 20px;
   border-bottom-left-radius: 20px 20px;
-  height:100%
+  height: 100%;
 }
 .total-price-bar {
   width: 180px;
