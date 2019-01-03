@@ -7,18 +7,18 @@
     </p>
     <p>
       技术栈
-      <a href="https://cn.vuejs.org/v2/api/">vue2</a>
+      <a target="_blank" href="https://cn.vuejs.org/v2/api/">vue2</a>
       +
-      <a href="https://vuecomponent.github.io/ant-design-vue/docs/vue/introduce-cn/">antd</a>
+      <a target="_blank" href="https://vuecomponent.github.io/ant-design-vue/docs/vue/introduce-cn/">antd</a>
       +
-      <a href="https://vuex.vuejs.org/zh/api/">vuex</a>
+      <a target="_blank" href="https://vuex.vuejs.org/zh/api/">vuex</a>
       +
-      <a href="https://router.vuejs.org/zh/api/">vue-router</a>
+      <a target="_blank" href="https://router.vuejs.org/zh/api/">vue-router</a>
       +
-      <a href="https://github.com/nuysoft/Mock/wiki">mock</a>
+      <a target="_blank" href="https://github.com/nuysoft/Mock/wiki">mock</a>
     </p>
     <p>
-      <a href="https://github.com/NgeKaworu/vue-demo">仓库地址</a>
+      <a target="_blank" href="https://github.com/NgeKaworu/vue-demo">仓库地址</a>
     </p>
     <p>谢谢浏览ˋ( ° ▽、° )</p>
   </div>
