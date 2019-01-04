@@ -18,7 +18,7 @@
       <a target="_blank" href="https://github.com/nuysoft/Mock/wiki">mock</a>
     </p>
     <p>
-      <a target="_blank" href="https://github.com/NgeKaworu/vue-demo">仓库地址</a>
+      <a target="_blank" href="https://github.com/NgeKaworu/vue-shoppingCart">仓库地址</a>
     </p>
     <p>谢谢浏览ˋ( ° ▽、° )</p>
   </div>
