@@ -21,6 +21,7 @@
       <a target="_blank" href="https://github.com/NgeKaworu/vue-shoppingCart">仓库地址</a>
     </p>
     <p>谢谢浏览ˋ( ° ▽、° )</p>
+    <p>多项目 web hooks 测试</p>
   </div>
 </template>
 
