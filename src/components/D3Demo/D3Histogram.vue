@@ -36,6 +36,14 @@ export default {
         .domain([0, max])
         .range([0, 400]);
 
+      const axis = d3
+        // 方向
+        .axisBottom()
+        // 比例尺
+        .scale(linear)
+        // 刻度
+        .ticks(7);
+
       svg
         .selectAll("rect")
         .data(dataset)
@@ -46,6 +54,11 @@ export default {
         .attr("width", d => linear(d))
         .attr("height", 23)
         .attr("fill", "steelblue");
+
+      svg
+        .append("g")
+        .attr("transform", "translate(20,300)")
+        .call(axis);
     }
   },
   mounted() {
