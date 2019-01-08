@@ -22,7 +22,7 @@ export default new Router({
       component: () => import("./views/OtherPage.vue"),
       children: [
         {
-          path: "",
+          path: "helloworld",
           name: "helloworld",
           component: () => import("./components/OtherDemo/HelloWorld.vue"),
           props: {
@@ -38,6 +38,17 @@ export default new Router({
           path: "todolist/:id",
           name: "todolist",
           component: () => import("./components/OtherDemo/TodoList.vue")
+        }
+      ]
+    },
+    {
+      path: "/d3",
+      component: () => import("./views/OtherPage.vue"),
+      children: [
+        {
+          path: "histogram",
+          name: "histogram",
+          component: () => import("./components/D3Demo/D3Histogram.vue")
         }
       ]
     }

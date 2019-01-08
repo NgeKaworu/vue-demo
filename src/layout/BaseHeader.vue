@@ -12,6 +12,28 @@
         </RouterLink>
       </Item>
       <SubMenu>
+        <span slot="title" key="chart">
+          <Icon type="code"/>Chart
+        </span>
+        <ItemGroup title="d3练习">
+          <Item key="d3histogram">
+            <RouterLink to="/d3/histogram">
+              <Icon type="bar-chart"/>Histogram
+            </RouterLink>
+          </Item>
+          <!-- <Item key="sudoku">
+            <RouterLink to="/other/sudoku">
+              <Icon type="table"/>Sudoku
+            </RouterLink>
+          </Item>
+          <Item key="todolist">
+            <RouterLink to="/other/todolist/all">
+              <Icon type="ordered-list"/>todolist
+            </RouterLink>
+          </Item> -->
+        </ItemGroup>
+      </SubMenu>
+      <SubMenu>
         <span slot="title" key="other">
           <!-- <RouterLink to="/other"> -->
           <Icon type="ellipsis"/>Other
@@ -19,7 +41,7 @@
         </span>
         <ItemGroup title="其他demo">
           <Item key="helloworld">
-            <RouterLink to="/other">
+            <RouterLink to="/other/helloworld">
               <Icon type="global"/>HelloWorld
             </RouterLink>
           </Item>
@@ -35,6 +57,11 @@
           </Item>
         </ItemGroup>
       </SubMenu>
+      <Item key="react">
+        <a href="http://furan.xyz/react">
+          <Icon type="export"/>React demos
+        </a>
+      </Item>
     </Menu>
   </Header>
 </template>
