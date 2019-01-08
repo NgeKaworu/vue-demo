@@ -43,7 +43,7 @@ export default new Router({
     },
     {
       path: "/d3",
-      component: () => import("./views/OtherPage.vue"),
+      component: () => import("./views/D3DemosPage.vue"),
       children: [
         {
           path: "histogram",
