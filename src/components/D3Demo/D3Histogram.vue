@@ -39,13 +39,12 @@ export default {
         .rangeRound([0, width - padding.left - padding.right])
         // 留白
         .paddingInner(0.05);
-
       //y轴的比例尺
       const yScale = d3
         .scaleLinear()
         .domain([0, d3.max(dataset)])
         .range([height - padding.top - padding.bottom, 0]);
-
+      console.log(yScale.domain()[0], yScale(0));
       //定义x轴
       const xAxis = d3.axisBottom().scale(xScale);
 
@@ -59,12 +58,22 @@ export default {
         .append("rect")
         .attr("transform", `translate(${padding.left}, ${padding.top})`)
         .attr("x", (d, i) => xScale(i))
-        .attr("y", d => yScale(d))
+        .attr("y", yScale(0))
+        .transition()
+        .delay((d, i) => {
+          return i * 200;
+        })
+        .duration(2000)
+        // 弹跳 https://github.com/xswei/d3-scale/blob/master/README.md#band_range
+        .ease(d3.easeBounce)
+        .attr("y", d => {
+          const min = yScale.domain()[0];
+          return yScale(d);
+        })
         .attr("width", xScale.bandwidth())
         .attr("height", d => height - padding.top - padding.bottom - yScale(d))
         .attr("fill", "steelblue");
 
-      console.log(rects);
       const texts = svg
         .selectAll("text")
         .data(dataset)
@@ -72,8 +81,18 @@ export default {
         .append("text")
         .attr("transform", `translate(${padding.left}, ${padding.top})`)
         .attr("x", (d, i) => xScale(i))
-        .attr("y", d => yScale(d))
-        .attr("dx", xScale.bandwidth() / 4)
+        .attr("y", yScale(0))
+        .transition()
+        .delay((d, i) => {
+          return i * 200;
+        })
+        .duration(2000)
+        .ease(d3.easeBounce)
+        .attr("y", d => {
+          const min = yScale.domain()[0];
+          return yScale(d);
+        })
+        .attr("dx", xScale.bandwidth() / 3)
         .attr("dy", d => 20)
         .text(d => d);
 
