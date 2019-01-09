@@ -59,6 +59,11 @@ export default new Router({
           path: "force",
           name: "force",
           component: () => import("./components/D3Demo/D3Force.vue")
+        },
+        {
+          path: "chord",
+          name: "chord",
+          component: () => import("./components/D3Demo/D3Chord.vue")
         }
 
       ]
