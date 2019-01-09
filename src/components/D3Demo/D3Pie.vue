@@ -19,6 +19,7 @@ export default {
 
       const outerRadius = 150; //外半径
       const innerRadius = 0; //内半径，为0则中间没有空白
+
       //在 body 里添加一个 SVG 画布
       const svg = d3
         .select(node)
@@ -26,13 +27,10 @@ export default {
         .attr("width", width)
         .attr("height", height);
 
-      //画布周边的空白
-      const padding = { left: 30, right: 30, top: 20, bottom: 20 };
-
       //定义一个数组
       const dataset = [30, 10, 43, 55, 13];
       const max = d3.max(dataset);
-
+      //饼图
       const pie = d3.pie();
       const pieData = pie(dataset);
       const arc = d3
@@ -41,7 +39,8 @@ export default {
         .outerRadius(outerRadius);
 
       const color = d3.scaleOrdinal(d3.schemeCategory10);
-      console.log(pieData);
+
+
       const arcs = svg
         .selectAll("g")
         .data(pieData)
@@ -52,7 +51,7 @@ export default {
       arcs
         .append("path")
         .attr("fill", (d, i) => color(i))
-        .attr("d", d => arc(d));
+        .attr("d", d => arc(d)); //调用弧生成器，得到路径值
 
       arcs
         .append("text")
