@@ -23,15 +23,15 @@ export default {
         outerRadius = innerRadius * 1.1;
 
       const color = d3.scaleOrdinal(d3.schemeCategory10);
-
-      // const svg = d3
-      //   .select(node)
-      //   .append("svg")
-      //   // 缩放
-      //   .attr("preserveAspectRatio", "xMinYMin meet")
-      //   .attr("viewBox", "0 0 " + width + " " + height)
-      //   .style("width", "100%")
-      //   .style("height", "auto");
+      // 画布层
+      const svg = d3
+        .select(node)
+        .append("svg")
+        // 缩放
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", "0 0 " + width + " " + height)
+        .style("width", "100%")
+        .style("height", "auto");
 
       // 假数据
       const names = [
@@ -45,7 +45,6 @@ export default {
           "O-Mag",
           "RuV"
         ],
-        c1 = ["#301E1E", "#083E77", "#342350", "#567235", "#8B161C", "#DF7C00"],
         opacityDefault = 0.8;
 
       const matrix = [
@@ -60,122 +59,79 @@ export default {
         [0, 1, 1, 1, 1, 1, 1, 0, 0]
       ];
 
-      const colors = d3
-        .scaleOrdinal()
-        .domain(d3.range(names.length))
-        .range(c1);
-
       const chord = d3
+        // 弦图生成器
         .chord()
+        // 间隔
         .padAngle(0.15)
+        // 排序
         .sortChords(d3.descending);
 
       const arc = d3
+        // 环形生成器
         .arc()
+        // 内圆
         .innerRadius(innerRadius * 1.01)
+        // 外圆
         .outerRadius(outerRadius);
 
+      // 弦的半径
       const path = d3.ribbon().radius(innerRadius);
 
-      ////////////////////////////////////////////////////////////
-      ////////////////////// Create SVG //////////////////////////
-      ////////////////////////////////////////////////////////////
-
-      const svg = d3
-        .select(node)
-        .append("svg")
+      // 主层
+      const layout = svg
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr(
-          "transform",
-          "translate(" +
-            (width / 2 + margin.left) +
-            "," +
-            (height / 2 + margin.top) +
-            ")"
-        )
+        .attr("transform", `translate(${width / 2}, ${height / 2})`)
         .datum(chord(matrix));
 
-      ////////////////////////////////////////////////////////////
-      ////////////////// Draw outer Arcs /////////////////////////
-      ////////////////////////////////////////////////////////////
-
-      const outerArcs = svg
+      // 外圆层
+      const outerArcs = layout
         .selectAll("g.group")
-        .data(function(chords) {
-          return chords.groups;
-        })
+        .data(chords => chords.groups)
         .enter()
         .append("g")
         .attr("class", "group")
         .on("mouseover", fade(0.1))
-        .on("mouseout", fade(opacityDefault))
+        .on("mouseout", fade(opacityDefault));
 
-        // text popups
-        .on("click", mouseoverChord)
-        .on("mouseout", mouseoutChord);
-
-      ////////////////////////////////////////////////////////////
-      ////////////////////// Append names ////////////////////////
-      ////////////////////////////////////////////////////////////
-
-      //Append the label names INSIDE outside
       outerArcs
         .append("path")
-        .style("fill", function(d) {
-          return colors(d.index);
-        })
-        .attr("id", function(d, i) {
-          return "group" + d.index;
-        })
+        .style("fill", d => color(d.index))
+        .attr("id", d => "group" + d.index)
         .attr("d", arc);
 
+      // 文字层
       outerArcs
         .append("text")
         .attr("x", 6)
         .attr("dx", 60)
         .attr("dy", 18)
         .append("textPath")
-        .attr("href", function(d) {
-          return "#group" + d.index;
-        })
-        .text(function(chords, i) {
-          return names[i];
-        })
+        .attr("href", d => "#group" + d.index)
+        .text((d, i) => names[i])
         .style("fill", "white");
 
-      ////////////////////////////////////////////////////////////
-      ////////////////// Draw inner chords ///////////////////////
-      ////////////////////////////////////////////////////////////
-
-      svg
+      // 弦层
+      layout
         .selectAll("path.chord")
-        .data(function(chords) {
-          return chords;
-        })
+        .data(chords => chords)
         .enter()
         .append("path")
         .attr("class", "chord")
-        .style("fill", function(d) {
-          return colors(d.source.index);
-        })
+        .style("fill", d => color(d.source.index))
         .style("opacity", opacityDefault)
         .attr("d", path);
 
-      ////////////////////////////////////////////////////////////
-      //////// Draw Super Categories - By Faraz Shuja ////////////
-      ////////////////////////////////////////////////////////////
-
-      //define grouping with colors
       const groups = [
         { sIndex: 0, eIndex: 2, title: "SuperCategory 1", color: "#c69c6d" },
         { sIndex: 4, eIndex: 5, title: "SuperCategory 2", color: "#00a651" }
       ];
       const cD = chord(matrix).groups;
-
-      //draw arcs
-      for (const i = 0; i < groups.length; i++) {
+      console.log(cD);
+      //最外圈
+      for (let i = 0; i < groups.length; i++) {
         const __g = groups[i];
         const arc1 = d3
           .arc()
@@ -184,14 +140,14 @@ export default {
           .startAngle(cD[__g.sIndex].startAngle)
           .endAngle(cD[__g.eIndex].endAngle);
 
-        svg
+        layout
           .append("path")
           .attr("d", arc1)
           .attr("fill", __g.color)
           .attr("id", "groupId" + i);
 
         // Add a text label.
-        const text = svg
+        const text = layout
           .append("text")
           .attr("x", 200)
           .attr("dy", 20);
@@ -204,20 +160,11 @@ export default {
           .text(__g.title);
       }
 
-      ////////////////////////////////////////////////////////////
-      ////////////////// Extra Functions /////////////////////////
-      ////////////////////////////////////////////////////////////
-
-      function popup() {
-        return function(d, i) {
-          console.log("love");
-        };
-      } //popup
-
-      //Returns an event handler for fading a given chord group.
+      // 内部方法
+      // 过滤所有不是当前hover的弦, 并且虚化
       function fade(opacity) {
         return function(d, i) {
-          svg
+          layout
             .selectAll("path.chord")
             .filter(function(d) {
               return d.source.index != i && d.target.index != i;
@@ -225,28 +172,7 @@ export default {
             .transition()
             .style("opacity", opacity);
         };
-      } //fade
-
-      //Highlight hovered over chord
-      function mouseoverChord(d, i) {
-        //Decrease opacity to all
-        svg
-          .selectAll("path.chord")
-          .transition()
-          .style("opacity", 0.1);
-        //Show hovered over chord with full opacity
-        d3.select(this)
-          .transition()
-          .style("opacity", 1);
       }
-      //Bring all chords back to default opacity
-      function mouseoutChord(d) {
-        //Set opacity back to default for all
-        svg
-          .selectAll("path.chord")
-          .transition()
-          .style("opacity", opacityDefault);
-      } //function mouseoutChord
     }
   },
   mounted() {
