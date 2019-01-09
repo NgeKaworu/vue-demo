@@ -129,7 +129,6 @@ export default {
         { sIndex: 4, eIndex: 5, title: "SuperCategory 2", color: "#00a651" }
       ];
       const cD = chord(matrix).groups;
-      console.log(cD);
       //最外圈
       for (let i = 0; i < groups.length; i++) {
         const __g = groups[i];
