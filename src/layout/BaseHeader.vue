@@ -26,11 +26,11 @@
               <Icon type="pie-chart"/>Pie
             </RouterLink>
           </Item>
-          <!--<Item key="todolist">
-            <RouterLink to="/other/todolist/all">
-              <Icon type="ordered-list"/>todolist
+          <Item key="d3">
+            <RouterLink to="/d3/force">
+              <Icon type="dot-chart"/>force
             </RouterLink>
-          </Item>-->
+          </Item>
         </ItemGroup>
       </SubMenu>
       <SubMenu>

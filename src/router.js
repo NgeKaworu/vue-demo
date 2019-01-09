@@ -54,6 +54,11 @@ export default new Router({
           path: "pie",
           name: "pie",
           component: () => import("./components/D3Demo/D3Pie.vue")
+        },
+        {
+          path: "force",
+          name: "force",
+          component: () => import("./components/D3Demo/D3Force.vue")
         }
 
       ]
