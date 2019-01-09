@@ -22,7 +22,7 @@ export default new Router({
       component: () => import("./views/OtherPage.vue"),
       children: [
         {
-          path: "",
+          path: "helloworld",
           name: "helloworld",
           component: () => import("./components/OtherDemo/HelloWorld.vue"),
           props: {
@@ -39,6 +39,28 @@ export default new Router({
           name: "todolist",
           component: () => import("./components/OtherDemo/TodoList.vue")
         }
+      ]
+    },
+    {
+      path: "/d3",
+      component: () => import("./views/D3DemosPage.vue"),
+      children: [
+        {
+          path: "histogram",
+          name: "histogram",
+          component: () => import("./components/D3Demo/D3Histogram.vue")
+        },
+        {
+          path: "pie",
+          name: "pie",
+          component: () => import("./components/D3Demo/D3Pie.vue")
+        },
+        {
+          path: "force",
+          name: "force",
+          component: () => import("./components/D3Demo/D3Force.vue")
+        }
+
       ]
     }
   ]
