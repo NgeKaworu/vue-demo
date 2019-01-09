@@ -21,16 +21,16 @@
               <Icon type="bar-chart"/>Histogram
             </RouterLink>
           </Item>
-          <!-- <Item key="sudoku">
-            <RouterLink to="/other/sudoku">
-              <Icon type="table"/>Sudoku
+          <Item key="pie">
+            <RouterLink to="/d3/pie">
+              <Icon type="pie-chart"/>Pie
             </RouterLink>
           </Item>
-          <Item key="todolist">
+          <!--<Item key="todolist">
             <RouterLink to="/other/todolist/all">
               <Icon type="ordered-list"/>todolist
             </RouterLink>
-          </Item> -->
+          </Item>-->
         </ItemGroup>
       </SubMenu>
       <SubMenu>

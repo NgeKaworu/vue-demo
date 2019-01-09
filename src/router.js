@@ -49,7 +49,13 @@ export default new Router({
           path: "histogram",
           name: "histogram",
           component: () => import("./components/D3Demo/D3Histogram.vue")
+        },
+        {
+          path: "pie",
+          name: "pie",
+          component: () => import("./components/D3Demo/D3Pie.vue")
         }
+
       ]
     }
   ]

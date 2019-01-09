@@ -9,7 +9,6 @@ export default {
     renderChart() {
       // 节点
       const node = this.$refs.node;
-      console.log(node);
       // 清除旧数据
       d3.select(node)
         .select("svg")
@@ -44,7 +43,6 @@ export default {
         .scaleLinear()
         .domain([0, d3.max(dataset)])
         .range([height - padding.top - padding.bottom, 0]);
-      console.log(yScale.domain()[0], yScale(0));
       //定义x轴
       const xAxis = d3.axisBottom().scale(xScale);
 
