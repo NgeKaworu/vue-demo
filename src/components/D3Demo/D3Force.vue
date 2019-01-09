@@ -30,8 +30,8 @@ export default {
         .select("svg")
         .remove();
       //画布大小
-      const width = 400;
-      const height = 400;
+      const width = 800;
+      const height = 600;
 
       const range = 100;
       const data = {
@@ -51,9 +51,16 @@ export default {
       const chartWidth = width - (margin.left + margin.right);
       const chartHeight = height - (margin.top + margin.bottom);
 
-      const svg = d3.select(node).append("svg");
+      const svg = d3
+        .select(node)
+        .append("svg")
+        // 缩放
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", "0 0 " + width + " " + height)
+        .style("width", "100%")
+        .style("height", "auto");
 
-      svg
+      const chartLayer = svg
         .attr("width", chartWidth)
         .attr("height", chartHeight)
         .attr("transform", "translate(" + [margin.left, margin.top] + ")");

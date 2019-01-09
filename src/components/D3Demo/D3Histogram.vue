@@ -21,8 +21,11 @@ export default {
       const svg = d3
         .select(node)
         .append("svg")
-        .attr("width", width)
-        .attr("height", height);
+        // 缩放
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", "0 0 " + width + " " + height)
+        .style("width", "100%")
+        .style("height", "auto");
 
       //画布周边的空白
       const padding = { left: 30, right: 30, top: 20, bottom: 20 };

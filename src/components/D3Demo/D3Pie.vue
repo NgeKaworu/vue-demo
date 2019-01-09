@@ -24,8 +24,11 @@ export default {
       const svg = d3
         .select(node)
         .append("svg")
-        .attr("width", width)
-        .attr("height", height);
+        // 缩放
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", "0 0 " + width + " " + height)
+        .style("width", "100%")
+        .style("height", "auto");
 
       //定义一个数组
       const dataset = [30, 10, 43, 55, 13];
@@ -39,7 +42,6 @@ export default {
         .outerRadius(outerRadius);
 
       const color = d3.scaleOrdinal(d3.schemeCategory10);
-
 
       const arcs = svg
         .selectAll("g")
