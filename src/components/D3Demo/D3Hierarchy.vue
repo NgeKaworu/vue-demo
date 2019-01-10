@@ -87,7 +87,6 @@ export default {
           )
       );
 
-
       const layout = svg.attr("width", width).attr("height", height);
 
       const g = layout
@@ -111,6 +110,18 @@ export default {
             .angle(d => d.x)
             .radius(d => d.y)
         );
+      // 水平版
+      // .attr(
+      //   "d",
+      //   d3
+      //     .linkHorizontal()
+      //     .x(function(d) {
+      //       return d.y / 2;
+      //     })
+      //     .y(function(d) {
+      //       return d.x / 2;
+      //     })
+      // );
 
       const nodes = g
         .append("g")
@@ -127,6 +138,8 @@ export default {
         translate(${d.y},0)
       `
         );
+      // 水平版
+      // .attr("transform", d => `translate(${width / 2}, ${height / 2})`);
 
       nodes
         .append("circle")
