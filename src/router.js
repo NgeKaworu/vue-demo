@@ -64,6 +64,11 @@ export default new Router({
           path: "chord",
           name: "chord",
           component: () => import("./components/D3Demo/D3Chord.vue")
+        },
+        {
+          path: "hierarchy",
+          name: "hierarchy",
+          component: () => import("./components/D3Demo/D3Hierarchy.vue")
         }
 
       ]

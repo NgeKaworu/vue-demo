@@ -36,6 +36,11 @@
               <Icon type="area-chart"/>Chord
             </RouterLink>
           </Item>
+          <Item key="hierarchy">
+            <RouterLink to="/d3/hierarchy">
+              <Icon type="stock"/>Hierarchy
+            </RouterLink>
+          </Item>
         </ItemGroup>
       </SubMenu>
       <SubMenu>
