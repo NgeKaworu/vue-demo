@@ -32,7 +32,7 @@ export default {
         .style("width", "100%")
         .style("height", "auto");
       // 假数据
-      const data = { name: "root", children: fakeDataGen(3, 3) };
+      const data = fakeDataGen();
       console.log(data);
       // {
       //   name: "中国",
@@ -70,8 +70,8 @@ export default {
       //     {
       //       name: "新疆",
       //       children: [
-      //         { name: "乌鲁木齐" },
-      //         { name: "克拉玛依" },
+      //         { name: "乌鲁木齐", children: null },
+      //         { name: "克拉玛依", children: [false] },
       //         { name: "吐鲁番" },
       //         { name: "哈密" }
       //       ]
@@ -80,15 +80,16 @@ export default {
       // };
       // 数据转化
 
-      function fakeDataGen(depth = 5, breadth = 5) {
+      function fakeDataGen(name = "root", depth = 5, breadth = 5) {
         return (
-          depth > 0 &&
-          Array(~~(Math.random() * breadth + 1))
-            .fill(null)
-            .map((d, i) => ({
-              name: `${breadth}-${depth}-${i}`,
-              children: fakeDataGen(depth - 1, breadth)
-            }))
+          depth > 0 && {
+            name: `${depth}-${name}`,
+            children:
+              depth - 1 > 0 &&
+              Array(~~(Math.random() * breadth + 1))
+                .fill(null)
+                .map((d, i) => fakeDataGen(i, depth - 1, breadth))
+          }
         );
       }
 
