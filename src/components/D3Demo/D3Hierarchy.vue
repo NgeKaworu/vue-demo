@@ -38,7 +38,7 @@ export default {
           {
             name: "浙江",
             children: [
-              { name: "杭州" },
+              { name: "杭州", children: [{ name: "乌镇" }] },
               { name: "宁波" },
               { name: "温州" },
               { name: "绍兴" }
@@ -87,7 +87,6 @@ export default {
           )
       );
 
-      console.log(root, root.links());
 
       const layout = svg.attr("width", width).attr("height", height);
 
