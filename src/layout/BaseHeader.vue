@@ -46,6 +46,11 @@
               <Icon type="dot-chart"/>Enclosure
             </RouterLink>
           </Item>
+          <Item key="map">
+            <RouterLink to="/d3/map">
+              <Icon type="radar-chart"/>Map
+            </RouterLink>
+          </Item>
         </ItemGroup>
       </SubMenu>
       <SubMenu>

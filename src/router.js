@@ -74,8 +74,12 @@ export default new Router({
           path: "enclosure",
           name: "enclosure",
           component: () => import("./components/D3Demo/D3Enclosure.vue")
+        },
+        {
+          path: "map",
+          name: "map",
+          component: () => import("./components/D3Demo/D3Map.vue")
         }
-
       ]
     }
   ]
