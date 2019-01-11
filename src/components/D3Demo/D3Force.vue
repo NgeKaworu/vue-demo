@@ -34,7 +34,7 @@ export default {
       const chartHeight = height - (margin.top + margin.bottom);
 
       const color = d3.scaleOrdinal(d3.schemeCategory10);
-
+      // svg 层
       const svg = d3
         .select(node)
         .append("svg")
@@ -43,7 +43,7 @@ export default {
         .attr("viewBox", "0 0 " + width + " " + height)
         .style("width", "100%")
         .style("height", "auto");
-
+      // 画布层
       const chartLayer = svg
         .attr("width", chartWidth)
         .attr("height", chartHeight)

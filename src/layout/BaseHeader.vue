@@ -26,9 +26,24 @@
               <Icon type="pie-chart"/>Pie
             </RouterLink>
           </Item>
-          <Item key="d3">
+          <Item key="force">
             <RouterLink to="/d3/force">
-              <Icon type="dot-chart"/>force
+              <Icon type="dot-chart"/>Force
+            </RouterLink>
+          </Item>
+          <Item key="chord">
+            <RouterLink to="/d3/chord">
+              <Icon type="area-chart"/>Chord
+            </RouterLink>
+          </Item>
+          <Item key="hierarchy">
+            <RouterLink to="/d3/hierarchy">
+              <Icon type="stock"/>Hierarchy
+            </RouterLink>
+          </Item>
+          <Item key="enclosure">
+            <RouterLink to="/d3/enclosure">
+              <Icon type="dot-chart"/>Enclosure
             </RouterLink>
           </Item>
         </ItemGroup>
