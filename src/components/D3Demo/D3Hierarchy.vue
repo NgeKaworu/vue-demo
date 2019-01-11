@@ -4,6 +4,8 @@
 
 <script>
 import * as d3 from "d3";
+import fakeData from "@/utils/fakeHierarchyData";
+
 export default {
   methods: {
     renderChart() {
@@ -32,66 +34,7 @@ export default {
         .style("width", "100%")
         .style("height", "auto");
       // 假数据
-      const data = fakeDataGen();
-      console.log(data);
-      // {
-      //   name: "中国",
-      //   children: [
-      //     {
-      //       name: "浙江",
-      //       children: [
-      //         { name: "杭州", children: [{ name: "乌镇" }] },
-      //         { name: "宁波" },
-      //         { name: "温州" },
-      //         { name: "绍兴" }
-      //       ]
-      //     },
-
-      //     {
-      //       name: "广西",
-      //       children: [
-      //         { name: "桂林" },
-      //         { name: "南宁" },
-      //         { name: "柳州" },
-      //         { name: "防城港" }
-      //       ]
-      //     },
-
-      //     {
-      //       name: "黑龙江",
-      //       children: [
-      //         { name: "哈尔滨" },
-      //         { name: "齐齐哈尔" },
-      //         { name: "牡丹江" },
-      //         { name: "大庆" }
-      //       ]
-      //     },
-
-      //     {
-      //       name: "新疆",
-      //       children: [
-      //         { name: "乌鲁木齐", children: null },
-      //         { name: "克拉玛依", children: [false] },
-      //         { name: "吐鲁番" },
-      //         { name: "哈密" }
-      //       ]
-      //     }
-      //   ]
-      // };
-      // 数据转化
-
-      function fakeDataGen(name = "root", depth = 5, breadth = 5) {
-        return (
-          depth > 0 && {
-            name: `${depth}-${name}`,
-            children:
-              depth - 1 > 0 &&
-              Array(~~(Math.random() * breadth + 1))
-                .fill(null)
-                .map((d, i) => fakeDataGen(i, depth - 1, breadth))
-          }
-        );
-      }
+      const data = fakeData();
 
       const cluster = d3.cluster().size([2 * Math.PI, radius - 100]);
       const root = cluster(

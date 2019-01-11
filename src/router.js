@@ -69,6 +69,11 @@ export default new Router({
           path: "hierarchy",
           name: "hierarchy",
           component: () => import("./components/D3Demo/D3Hierarchy.vue")
+        },
+        {
+          path: "enclosure",
+          name: "enclosure",
+          component: () => import("./components/D3Demo/D3Enclosure.vue")
         }
 
       ]

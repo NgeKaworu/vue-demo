@@ -41,6 +41,11 @@
               <Icon type="stock"/>Hierarchy
             </RouterLink>
           </Item>
+          <Item key="enclosure">
+            <RouterLink to="/d3/enclosure">
+              <Icon type="dot-chart"/>Enclosure
+            </RouterLink>
+          </Item>
         </ItemGroup>
       </SubMenu>
       <SubMenu>
