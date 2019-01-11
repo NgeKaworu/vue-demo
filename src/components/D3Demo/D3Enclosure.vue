@@ -63,10 +63,10 @@ export default {
         .attr("cx", d => d.x)
         .attr("cy", d => d.y)
         .attr("r", d => d.r)
-        .on("mouseover", (d, i) => {
+        .on("mouseover", function(d, i) {
           d3.select(this).attr("fill", "yellow");
         })
-        .on("mouseout", (d, i) => {
+        .on("mouseout", function(d, i) {
           d3.select(this).attr("fill", "rgb(31, 119, 180)");
         });
 
