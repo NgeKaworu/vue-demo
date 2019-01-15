@@ -59,7 +59,6 @@ export default {
           d3.select(this).attr("fill", color(i));
         });
 
-        console.log(data)
     }
   },
   mounted() {

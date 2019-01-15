@@ -2,7 +2,6 @@ import Mock from "mockjs";
 const Random = Mock.Random;
 
 const mProduct = parmas => {
-  console.log("in Mock, Parmas is: ", parmas);
   return Mock.mock({
     "data|60": [
       {

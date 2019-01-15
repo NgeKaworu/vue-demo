@@ -31,9 +31,7 @@ export default {
     async asyncTest() {
       try {
         const response = await axios.get("/mock_product");
-        console.log(response);
       } catch (error) {
-        console.error(error);
       }
     }
   }

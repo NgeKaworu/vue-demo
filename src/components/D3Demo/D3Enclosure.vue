@@ -82,7 +82,6 @@ export default {
         .attr("dx", -12)
         .attr("dy", 1)
         .text(d => {
-          console.log(d);
           return d.data.name;
         });
     }
