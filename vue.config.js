@@ -1,5 +1,5 @@
 module.exports = {
-  baseUrl: "/vue/",
+  publicPath: "/vue/",
   productionSourceMap: false,
   css: {
     loaderOptions: {
